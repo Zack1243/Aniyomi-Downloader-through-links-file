@@ -1,0 +1,138 @@
+youtube-dt [options] URL
+
+
+
+-a, --batch-file FILE           File containing URLs to download ("-" for
+                                stdin), one URL per line. Lines starting
+                                with "#", ";" or "]" are considered as
+                                comments and ignored
+
+
+-P, --paths [TYPES:]PATH        The paths where the files should be
+                                downloaded. Specify the type of file and the
+                                path separated by a colon ":". All the same
+                                TYPES as --output are supported.
+                                Additionally, you can also provide "home"
+                                (default) and "temp" paths. All intermediary
+                                files are first downloaded to the temp path
+                                and then the final files are moved over to
+                                the home path after download is finished.
+                                This option is ignored if --output is an
+                                absolute path
+
+
+-o, --output [TYPES:]TEMPLATE   Output filename template; see "OUTPUT
+                                TEMPLATE" for details
+
+
+--windows-filenames             Force filenames to be Windows-compatible
+
+
+--write-info-json               Write video metadata to a .info.json file
+                                (this may contain personal information)
+
+--write-thumbnail               Write thumbnail image to disk
+
+-f, --format FORMAT             Video format code, see "FORMAT SELECTION"
+                                for more details
+
+--check-formats                 Make sure formats are selected only from
+                                those that are actually downloadable
+
+
+--check-all-formats             Check all formats for whether they are
+                                actually downloadable
+
+
+--embed-thumbnail               Embed thumbnail in the video as cover art
+
+--convert-thumbnails FORMAT     Convert the thumbnails to another format
+                                (currently supported: jpg, png, webp). You
+                                can specify multiple rules using similar
+                                syntax as --remux-video
+
+
+
+
+b, best: Select the best quality format that contains both video and audio. Equivalent to best*[vcodec!=none][acodec!=none]
+
+
+
+Filtering Formats
+You can also filter the video formats by putting a condition in brackets, as in -f "best[height=720]" (or -f "[filesize>10M]" since filters without a selector are interpreted as best).
+
+The following numeric meta fields can be used with comparisons <, <=, >, >=, = (equals), != (not equals):
+
+filesize: The number of bytes, if known in advance
+filesize_approx: An estimate for the number of bytes
+width: Width of the video, if known
+height: Height of the video, if known
+aspect_ratio: Aspect ratio of the video, if known
+tbr: Average bitrate of audio and video in kbps
+abr: Average audio bitrate in kbps
+vbr: Average video bitrate in kbps
+asr: Audio sampling rate in Hertz
+fps: Frame rate
+audio_channels: The number of audio channels
+stretched_ratio: width:height of the video's pixels, if not square
+Also filtering work for comparisons = (equals), ^= (starts with), $= (ends with), *= (contains), ~= (matches regex) and following string meta fields:
+
+url: Video URL
+ext: File extension
+acodec: Name of the audio codec in use
+vcodec: Name of the video codec in use
+container: Name of the container format
+protocol: The protocol that will be used for the actual download, lower-case (http, https, rtsp, rtmp, rtmpe, mms, f4m, ism, http_dash_segments, m3u8, or m3u8_native)
+language: Language code
+dynamic_range: The dynamic range of the video
+format_id: A short description of the format
+format: A human-readable description of the format
+format_note: Additional info about the format
+resolution: Textual description of width and height
+
+
+
+CONFIGURATION
+
+https://github.com/yt-dlp/yt-dlp?tab=readme-ov-file#configuration
+
+
+
+
+
+
+{
+	"title": "Example Title",
+	"author": "Example Author",
+	"artist": "Example Artist",
+	"description": "Example Description",
+	"genre": ["genre 1", "genre 2", "etc"],
+	"status": "0",
+	"_status values": ["0 = Unknown", "1 = Ongoing", "2 = Completed", "3 = Licensed", "4 = Publishing finished", "5 = Cancelled", "6 = On hiatus"]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
